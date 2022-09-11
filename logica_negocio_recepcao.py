@@ -137,22 +137,12 @@ class Recepcao:
             val = (result[i][0], )
             self.cursor.execute(sql, val)
             self.mydb.commit()
-   
-    def Limpa_Pedidos_Geral(self):
-        sql = "DELETE FROM Pratos_Pedidos"
-        self.cursor.execute(sql)
-        self.mydb.commit()
-        sql = "DELETE FROM Bebidas_Pedidos"
-        self.cursor.execute(sql)
-        self.mydb.commit()
-        sql = "DELETE FROM Pedidos"
-        self.cursor.execute(sql)
-        self.mydb.commit()
     
-    def Limpa_Mesas(self):
-        sql = "UPDATE Mesa SET ID_Cliente = NULL"
+    def Cardapio(self):
+        sql = "SELECT * FROM Cardapio"
         self.cursor.execute(sql)
-        self.mydb.commit()
+        result = self.cursor.fetchall()
+        return result
 
     # TODO  - Definir uma forma de obter o cardapio
 

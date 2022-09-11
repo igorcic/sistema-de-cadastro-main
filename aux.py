@@ -17,8 +17,7 @@ def main():
     # caixa.Faz_Pedido(10.00, '67952834100', 12, [[1,2,3],[1,2,3]])
     # caixa.Limpa_Pedidos_Cliente('Brenda Barbosa Pinto')
     # caixa.Add_Cliente("Roberto Magalhães", "67952834100")
-    # caixa.Limpa_Pedidos_Geral()
-    # caixa.Limpa_Mesas()
+    caixa.Cardapio()
 
 if __name__ == "__main__":
     main()
