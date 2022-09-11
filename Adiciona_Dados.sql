@@ -93,48 +93,48 @@ VALUES
 
 INSERT INTO Funcionarios(CPF, Nome, Data_Contrato, Cargo)
 VALUES
-	('6795283410', 'Roberto Magalhães' , '2016-02-09', 'ADM')
+	('67952834100', 'Roberto Magalhães' , '2016-02-09', 'ADM')
 ;
 
 INSERT INTO Funcionarios()
 VALUES
-	('1064259387', 'Júlio Oliveira' , '2016-02-12', 'Cozinha', '6795283410'),
-    ('8964250371', 'Marcia Pereira' , '2017-01-18', 'Atendimento', '6795283410'),
-    ('5026891374', 'Gorete da Fofoca' , '2017-04-16', 'Limpeza', '6795283410'),
-    ('2016579843', 'Juscelino do Dominó' , '2018-09-25', 'Cozinha', '1064259387'),
-    ('6095324718', 'Michael Jordan' , '2019-08-30', 'TI', '6795283410'),
-	('6854921073', 'Pedrinho do Baile' , '2021-09-12', 'Marketing', '6095324718'),
-    ('4371206895', 'Daiane dos Santos' , '2018-10-05', 'Atendimento', '8964250371'),
-    ('5861074329', 'Felipe Baiano' , '2018-07-21', 'Cozinha', '1064259387'),
-    ('1678423059', 'Margarete Lima', '2018-05-15', 'Atendimento', '4371206895')
+	('10642593870', 'Júlio Oliveira' , '2016-02-12', 'Cozinha', '67952834100'),
+    ('89642503710', 'Marcia Pereira' , '2017-01-18', 'Atendimento', '67952834100'),
+    ('50268913740', 'Gorete da Fofoca' , '2017-04-16', 'Limpeza', '67952834100'),
+    ('20165798430', 'Juscelino do Dominó' , '2018-09-25', 'Cozinha', '10642593870'),
+    ('60953247180', 'Michael Jordan' , '2019-08-30', 'TI', '67952834100'),
+	('68549210730', 'Pedrinho do Baile' , '2021-09-12', 'Marketing', '60953247180'),
+    ('43712068950', 'Daiane dos Santos' , '2018-10-05', 'Atendimento', '89642503710'),
+    ('58610743290', 'Felipe Baiano' , '2018-07-21', 'Cozinha', '10642593870'),
+    ('16784230590', 'Margarete Lima', '2018-05-15', 'Atendimento', '43712068950')
 ;
 
 INSERT INTO Email_Func()
 VALUES
-	('6795283410', 'rmagal@gmail.com' ),
-    ('1064259387', 'seujulio@gmail.com'),
-    ('8964250371', 'mpereira@gmail.com'),
-    ('5026891374', 'senhorado71@gmail.com'),
-    ('2016579843', 'domingo@domino.br'),
-    ('6854921073', 'mcpedrinnn_do_baile@gmail.com'),
-    ('6095324718', 'oneal@nba.na'),
-    ('4371206895', 'santos@ginasta.br'),
-    ('5861074329', 'felipepchef@estelar.com'),
-    ('1678423059', 'donalima@gmail.com')
+	('67952834100', 'rmagal@gmail.com' ),
+    ('10642593870', 'seujulio@gmail.com'),
+    ('89642503710', 'mpereira@gmail.com'),
+    ('50268913740', 'senhorado71@gmail.com'),
+    ('20165798430', 'domingo@domino.br'),
+    ('68549210730', 'mcpedrinnn_do_baile@gmail.com'),
+    ('60953247180', 'oneal@nba.na'),
+    ('43712068950', 'santos@ginasta.br'),
+    ('58610743290', 'felipepchef@estelar.com'),
+    ('16784230590', 'donalima@gmail.com')
 ;
 
 INSERT INTO Telefone_Func()
 VALUES
-	('6795283410', '21 84536694' ),
-    ('1064259387', '16 31244813'),
-    ('8964250371', '65 80452254'),
-    ('5026891374', '41 50138403'),
-    ('2016579843', '34 42314149'),
-    ('6854921073', '21 63115282'),
-    ('6095324718', '91 53078504'),
-    ('4371206895', '11 98765865'),
-    ('5861074329', '67 89998212'),
-    ('1678423059', '11 41336478')
+	('67952834100', '21 84536694' ),
+    ('10642593870', '16 31244813'),
+    ('89642503710', '65 80452254'),
+    ('50268913740', '41 50138403'),
+    ('20165798430', '34 42314149'),
+    ('68549210730', '21 63115282'),
+    ('60953247180', '91 53078504'),
+    ('43712068950', '11 98765865'),
+    ('58610743290', '67 89998212'),
+    ('16784230590', '11 41336478')
 ;
 
 INSERT INTO Clientes(Nome)
@@ -148,7 +148,7 @@ VALUES
 
 INSERT INTO Clientes(Nome, CPF)
 VALUES
-	('Ryan Araujo Souza','2893746150')
+	('Ryan Araujo Souza','28937461500')
 ;
 
 INSERT INTO Utensilios(Nome, Valor_Compra, ID_Forn)
@@ -212,11 +212,11 @@ VALUES
 
 INSERT INTO Pedidos(Data_Pedido, Total, ID_Func, ID_Mesa)
 VALUES
-	('2022-07-08', 47.50, '8964250371', 2),
-    ('2022-07-31', 167.00, '6795283410', 4),
-    ('2022-08-05', 144.00, '6795283410', 1),
-    ('2022-08-18', 200.50, '4371206895', 8),
-    ('2022-08-27', 3.50, '8964250371', 5)
+	('2022-07-08', 47.50, '89642503710', 2),
+    ('2022-07-31', 167.00, '67952834100', 4),
+    ('2022-08-05', 144.00, '67952834100', 1),
+    ('2022-08-18', 200.50, '43712068950', 8),
+    ('2022-08-27', 3.50, '89642503710', 5)
 ;
 
 INSERT INTO Pratos_Pedidos()

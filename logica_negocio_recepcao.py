@@ -22,26 +22,29 @@ class Recepcao:
         # Padrao esperado args: Nome ou CPF
         if re.findall("\d", args[0]) == []:
             sql = "SELECT ID FROM Clientes WHERE Nome = %s"
-            val = (Nome, )
-            self.cursor.execute(sql, val)
+            self.cursor.execute(sql, args)
             result = self.cursor.fetchone()
             return result[0]
         else:
             sql = "SELECT ID FROM Clientes WHERE CPF = %s"
-            val = (CPF, )
-            self.cursor.execute(sql, val)
+            self.cursor.execute(sql, args)
             result = self.cursor.fetchone()
             return result[0]
 
     def Add_Cliente(self, *args):
         # Padrao esperado args: (Nome, CPF) ou Nome
         if re.findall("\d", args[0]) == []:
-            if len(args) > 1:
-                sql = "INSERT INTO Clientes (Nome, CPF) VALUES (%s, %s)"
-                val = (args[0], args[1])
-                self.cursor.execute(sql, args)
-                self.mydb.commit()
-            else:
+            if len(args) == 2:
+                sql = "SELECT CPF From Clientes WHERE CPF = %s"
+                val = (args[1], )
+                self.cursor.execute(sql, val)
+                result = self.cursor.fetchone()
+                if result == None and len(args[1]) == 11:
+                    sql = "INSERT INTO Clientes (Nome, CPF) VALUES (%s, %s)"
+                    val = args
+                    self.cursor.execute(sql, val)
+                    self.mydb.commit()
+            elif len(args) == 1:
                 sql = "INSERT INTO Clientes " "(Nome) " "VALUE (%s)"
                 val = args
                 self.cursor.execute(sql, val)
@@ -110,6 +113,46 @@ class Recepcao:
                 val = (result[0], b[i])
                 self.cursor.execute(sql, val)
                 self.mydb.commit()
+        
+    def Limpa_Pedidos_Cliente(self, *args):
+        # Padrao esperado args: CPF cadastrado ou Nome
+        id = self.Get_Cliente_ID(args[0])
+        val = (id, )
+        sql = "SELECT ID FROM Mesa WHERE ID_Cliente = %s"
+        self.cursor.execute(sql, val)
+        result = self.cursor.fetchone()
+        sql = "SELECT ID FROM Pedidos WHERE ID_Mesa = %s"
+        self.cursor.execute(sql, result)
+        result = self.cursor.fetchall()
+        for i in range(len(result)):
+            sql = "DELETE FROM Pratos_Pedidos WHERE ID_Pedido = %s"
+            val = (result[i][0], )
+            self.cursor.execute(sql, val)
+            self.mydb.commit()
+            sql = "DELETE FROM Bebidas_Pedidos WHERE ID_Pedido = %s"
+            val = (result[i][0], )
+            self.cursor.execute(sql, val)
+            self.mydb.commit()
+            sql = "DELETE FROM Pedidos WHERE ID = %s"
+            val = (result[i][0], )
+            self.cursor.execute(sql, val)
+            self.mydb.commit()
+   
+    def Limpa_Pedidos_Geral(self):
+        sql = "DELETE FROM Pratos_Pedidos"
+        self.cursor.execute(sql)
+        self.mydb.commit()
+        sql = "DELETE FROM Bebidas_Pedidos"
+        self.cursor.execute(sql)
+        self.mydb.commit()
+        sql = "DELETE FROM Pedidos"
+        self.cursor.execute(sql)
+        self.mydb.commit()
+    
+    def Limpa_Mesas(self):
+        sql = "UPDATE Mesa SET ID_Cliente = NULL"
+        self.cursor.execute(sql)
+        self.mydb.commit()
 
     # TODO  - Definir uma forma de obter o cardapio
 
