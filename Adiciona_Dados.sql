@@ -40,10 +40,10 @@ VALUES
 	('Refrigerante de Limao', '2022-09-23', 4.50, 4.00, 'Nao_Alcoolica', 3),
     ('Chá Gelado de Pêssego', '2023-06-28', 4.00, 3.10, 'Nao_Alcoolica', 3),
     ('Cerveja Carona', '2023-07-05', 6.50, 4.88, 'Alcoolica', 3),
-    ('Energético Alien', '2024-01-02', 6.00, 3.79, 'Nao_Alcoolica', 2),
+    ('Energetico Alien', '2024-01-02', 6.00, 3.79, 'Nao_Alcoolica', 2),
     ('Refrigerante Cola-Coca', '2023-01-18', 5.00, 4.80, 'Nao_Alcoolica', 2),
-    ('Bebida Láctea Sabor Chocolate com Menta', '2023-05-17', 3.75, 1.25, 'Nao_Alcoolica', 2),
-	('Água da Pedra', '2024-01-02', 3.50, 2.10, 'Nao_Alcoolica', 2)
+    ('Bebida Lactea Sabor Chocolate com Menta', '2023-05-17', 3.75, 1.25, 'Nao_Alcoolica', 2),
+	('Agua da Pedra', '2024-01-02', 3.50, 2.10, 'Nao_Alcoolica', 2)
 ;
 
 INSERT INTO Mesa(ID, Qtd_Lugares)
@@ -77,7 +77,7 @@ VALUES
     ('Picles', '2023-02-13', 'Seco', 11.75, 'Vegetal', 5),
     ('Pão Italiano', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
     ('Pão com Gergelim', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
-    ('Filé de Peito de Frango', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
+    ('File de Peito de Frango', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
     ('Hamburguer de Picanha', '2023-01-10', 'Frio', 1.76, 'Carne', 4),
     ('Carne Moida sem Gordura', '2023-01-10', 'Frio', 34.99, 'Carne', 4),
     ('Bacon', '2023-01-12', 'Frio', 39.80, 'Carne', 4),
@@ -99,10 +99,10 @@ VALUES
 
 INSERT INTO Funcionarios()
 VALUES
-	('10642593870', 'Júlio Oliveira' , '2016-02-12', 'CHEF', '67952834100'),
+	('10642593870', 'Julio Oliveira' , '2016-02-12', 'CHEF', '67952834100'),
     ('89642503710', 'Marcia Pereira' , '2017-01-18', 'RECEPCAO', '67952834100'),
     ('50268913740', 'Gorete da Fofoca' , '2017-04-16', 'ADMINISTRACAO', '67952834100'),
-    ('20165798430', 'Juscelino do Dominó' , '2018-09-25', 'CHEF', '10642593870'),
+    ('20165798430', 'Juscelino do Domino' , '2018-09-25', 'CHEF', '10642593870'),
     ('60953247180', 'Michael Jordan' , '2019-08-30', 'ADMINISTRACAO', '67952834100'),
 	('68549210730', 'Pedrinho do Baile' , '2021-09-12', 'ADMINISTRACAO', '60953247180'),
     ('43712068950', 'Daiane dos Santos' , '2018-10-05', 'RECEPCAO', '89642503710'),
@@ -142,7 +142,7 @@ INSERT INTO Clientes(Nome)
 VALUES
 	('Brenda Barbosa Pinto'),
     ('Rafaela Ribeiro Castro'),
-    ('Tânia Castro Fernandes'),
+    ('Tania Castro Fernandes'),
     ('Isabela Cunha Correia'),
     ('Leonardo Gomes Silva')
 ;
@@ -155,8 +155,8 @@ VALUES
 INSERT INTO Utensilios(Nome, Valor_Compra, ID_Forn)
 VALUES
 	('Chapa Para Lanches', 8118.71, 6),
-    ('Fritadeira Elétrica', 11522.38, 6),
-    ('Forno Elétrico', 5874.85, 6),
+    ('Fritadeira Eletrica', 11522.38, 6),
+    ('Forno Eletrico', 5874.85, 6),
     ('Conservador de Batatas Fritas', 2151.24, 6),
     ('Exaustor', 1286.99, 6),
     ('Cortador de Frios', 4054.00, 6)
@@ -197,17 +197,19 @@ VALUES
     (1, 2),
     (6, 2),
     (6, 3),
+    (1, 3),
     (2, 4),
-    (2, 5),
+    (1, 5),
     (6, 5)
+    
 ;
 
 INSERT INTO Pratos(ID, Nome, Valor_Venda, ID_Preparo)
 VALUES
-	(1, 'Porção de Batata Frita', 17.00, 1),
+	(1, 'Porcao de Batata Frita', 17.00, 1),
     (2, 'Cheeseburguer', 19.50, 2),
     (3, 'X-Frango', 21.00, 3),
-    (4, 'Porção de Anéis de Cebola', 15.00, 4),
+    (4, 'Porcao de Aneis de Cebola', 15.00, 4),
     (5, 'X-Picanha', 23.50, 5)
 ;
 

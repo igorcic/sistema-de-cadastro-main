@@ -417,7 +417,7 @@ class Gerencia:
                 result = self.cursor.fetchone()
                 if result != None:
                     sql = "UPDATE Utensilios SET ID_Forn = %s WHERE Nome = %s"
-                    val = (self.Get_Fornecedor_Data(arg[1]), arg[0])
+                    val = (self.Get_Fornecedor_Data(args[1]), args[0])
                     self.cursor.execute(sql, val)
                     self.mydb.commit()
         
