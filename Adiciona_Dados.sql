@@ -99,15 +99,15 @@ VALUES
 
 INSERT INTO Funcionarios()
 VALUES
-	('10642593870', 'Júlio Oliveira' , '2016-02-12', 'Cozinha', '67952834100'),
-    ('89642503710', 'Marcia Pereira' , '2017-01-18', 'Atendimento', '67952834100'),
-    ('50268913740', 'Gorete da Fofoca' , '2017-04-16', 'Limpeza', '67952834100'),
-    ('20165798430', 'Juscelino do Dominó' , '2018-09-25', 'Cozinha', '10642593870'),
-    ('60953247180', 'Michael Jordan' , '2019-08-30', 'TI', '67952834100'),
-	('68549210730', 'Pedrinho do Baile' , '2021-09-12', 'Marketing', '60953247180'),
-    ('43712068950', 'Daiane dos Santos' , '2018-10-05', 'Atendimento', '89642503710'),
-    ('58610743290', 'Felipe Baiano' , '2018-07-21', 'Cozinha', '10642593870'),
-    ('16784230590', 'Margarete Lima', '2018-05-15', 'Atendimento', '43712068950')
+	('10642593870', 'Júlio Oliveira' , '2016-02-12', 'CHEF', '67952834100'),
+    ('89642503710', 'Marcia Pereira' , '2017-01-18', 'RECEPCAO', '67952834100'),
+    ('50268913740', 'Gorete da Fofoca' , '2017-04-16', 'ADMINISTRACAO', '67952834100'),
+    ('20165798430', 'Juscelino do Dominó' , '2018-09-25', 'CHEF', '10642593870'),
+    ('60953247180', 'Michael Jordan' , '2019-08-30', 'ADMINISTRACAO', '67952834100'),
+	('68549210730', 'Pedrinho do Baile' , '2021-09-12', 'ADMINISTRACAO', '60953247180'),
+    ('43712068950', 'Daiane dos Santos' , '2018-10-05', 'RECEPCAO', '89642503710'),
+    ('58610743290', 'Felipe Baiano' , '2018-07-21', 'CHEF', '10642593870'),
+    ('16784230590', 'Margarete Lima', '2018-05-15', 'RECEPCAO', '43712068950')
 ;
 
 INSERT INTO Email_Func()
