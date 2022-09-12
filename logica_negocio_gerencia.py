@@ -199,13 +199,15 @@ class Gerencia:
         self.cursor.execute(sql, val)
         result = self.cursor.fetchone()
         if result == None and len(args[1]) == 11 and len(args) == 3:
-            sql = "INSERT INTO Funcionarios  (Nome, CPF, Data_Contrato, Cargo) VALUE (%s, %s, curdate(),%s)"
-            self.cursor.execute(sql, args)
-            self.mydb.commit()
+            if args[2] == 'CHEF' or args[2] == 'RECEPCAO' or args[2] == 'ADMINISTRACAO':
+                sql = "INSERT INTO Funcionarios  (Nome, CPF, Data_Contrato, Cargo) VALUE (%s, %s, curdate(),%s)"
+                self.cursor.execute(sql, args)
+                self.mydb.commit()
         elif result == None and len(args[1]) == 11 and len(args) == 4:
-            sql = "INSERT INTO Funcionarios  (Nome, CPF, Data_Contrato, Cargo) VALUE (%s, %s, %s, %s)"
-            self.cursor.execute(sql, args)
-            self.mydb.commit()
+            if args[3] == 'CHEF' or args[3] == 'RECEPCAO' or args[3] == 'ADMINISTRACAO':
+                sql = "INSERT INTO Funcionarios  (Nome, CPF, Data_Contrato, Cargo) VALUE (%s, %s, %s, %s)"
+                self.cursor.execute(sql, args)
+                self.mydb.commit()
 
     def Get_Funcionario_Data(self, *args):
         # Padrao de dados: Nome ou CPF
