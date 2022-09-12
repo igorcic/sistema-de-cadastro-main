@@ -62,6 +62,12 @@ class Recepcao:
             val = args
             self.cursor.execute(sql, val)
             self.mydb.commit()
+    
+    def Mesas_Livres(self):
+        sql = "SELECT ID FROM Mesa WHERE ID_Cliente IS NULL"
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
+        return result
 
     def Aloca_Mesa(self,*args):
         # Padrao esperado args: (QTD_Lugares, ID_Cliente)
@@ -146,96 +152,3 @@ class Recepcao:
 
     # TODO  - Definir uma forma de obter o cardapio
 
-
-class Gerencia:
-    def __init__(self, user, passwd):
-        self.user = user
-        self.passwd = passwd
-        self.mydb = mysql.connector.connect(
-            host = "localhost",
-            user = user,
-            passwd = passwd,
-            auth_plugin = 'mysql_native_password',
-            database = "Restaurante_BD")
-        self.cursor = self.mydb.cursor()
-
-    def __del__(self):
-        if self.mydb.is_connected():
-            self.cursor.close()
-            self.mydb.close()
-    
-    def Add_Fornecedor(self, Nome):
-        sql = "INSERT INTO Fornecedores " "(Nome) " "VALUE (%s)"
-        val = (Nome, )
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Get_Fornecedor_ID(self, Nome):
-        sql = "SELECT ID FROM Fornecedores WHERE Nome = %s"
-        val = (Nome, )
-        self.cursor.execute(sql, val)
-        result = self.cursor.fetchone()
-        return result[0]
-    
-    def Get_Fornecedor_Nome(self, ID):
-        sql = "SELECT Nome FROM Fornecedores WHERE ID = %s"
-        val = (ID, )
-        self.cursor.execute(sql, val)
-        result = self.cursor.fetchone()
-        return result[0]
-    
-    def Del_Fornecedor(self, Nome):
-        sql = "DELETE FROM Fornecedores WHERE Nome = %s"
-        val = (Nome, )
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Add_Telefone_Fornecedor(self, Nome, Telefone):
-        sql = "INSERT INTO Telefone_Fornecedores " "(ID_Forn, Telefone) " "VALUE (%s, %s)"
-        val = (self.Get_Fornecedor_ID(Nome), Telefone)
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Add_Email_Fornecedor(self, Nome, Email):
-        sql = "INSERT INTO Email_Fornecedores" "(ID_Forn, Email) " "VALUE (%s, %s)"
-        val = (self.Get_Fornecedor_ID(Nome), Email)
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-    
-    def Add_Funcionario(self, Nome):
-        sql = "INSERT INTO Funcionarios " "(Nome) " "VALUE (%s)"
-        val = (Nome, )
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Get_Funcionario_CPF(self, Nome):
-        sql = "SELECT CPF FROM Funcionarios WHERE Nome = %s"
-        val = (Nome, )
-        self.cursor.execute(sql, val)
-        result = self.cursor.fetchone()
-        return result[0]
-    
-    def Get_Funcionario_Nome(self, CPF):
-        sql = "SELECT Nome FROM Fornecedores WHERE CPF = %s"
-        val = (ID, )
-        self.cursor.execute(sql, val)
-        result = self.cursor.fetchone()
-        return result[0]
-    
-    def Del_Funcionario(self, Nome):
-        sql = "DELETE FROM Funcionarios WHERE Nome = %s"
-        val = (self.Get_Funcionario_Nome, )
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Add_Telefone_Func(self, Nome, Telefone):
-        sql = "INSERT INTO Telefone_Func " "(ID_Forn, Telefone) " "VALUE (%s, %s)"
-        val = (self.Get_Fornecedor_ID(Nome), Telefone)
-        self.cursor.execute(sql, val)
-        self.mydb.commit()
-
-    def Add_Email_Fornecedor(self, Nome, Email):
-        sql = "INSERT INTO Email_Fornecedores" "(ID_Forn, Email) " "VALUE (%s, %s)"
-        val = (self.Get_Fornecedor_ID(Nome), Email)
-        self.cursor.execute(sql, val)
-        self.mydb.commit()

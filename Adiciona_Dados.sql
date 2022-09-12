@@ -2,6 +2,7 @@ USE Restaurante_BD;
 
 INSERT INTO Fornecedores(Nome)
 VALUES
+	('Estoque/Sem Fornecedor'),
 	('Cola Coca'),
     ('VEBAM'),
     ('Paonificadora do Art'),
@@ -36,13 +37,13 @@ VALUES
 
 INSERT INTO Bebidas(Nome, Validade, Valor_Venda, Valor_Compra, Tipo, ID_Forn)
 VALUES
-	('Refrigerante de Limao 350ML', '2022-09-23', 4.50, 4.00, 'Nao_Alcoolica', 2),
-    ('Chá Gelado de Pêssego 350ML', '2023-06-28', 4.00, 3.10, 'Nao_Alcoolica', 2),
-    ('Cerveja Carona 355ML', '2023-07-05', 6.50, 4.88, 'Alcoolica', 2),
-    ('Energético Alien 355ML', '2024-01-02', 6.00, 3.79, 'Nao_Alcoolica', 1),
-    ('Refrigerante Cola-Coca 350ML', '2023-01-18', 5.00, 4.80, 'Nao_Alcoolica', 1),
-    ('Bebida Láctea Sabor Chocolate com Menta 250ML', '2023-05-17', 3.75, 1.25, 'Nao_Alcoolica', 1),
-	('Água da Pedra 600ML', '2024-01-02', 3.50, 2.10, 'Nao_Alcoolica', 1)
+	('Refrigerante de Limao', '2022-09-23', 4.50, 4.00, 'Nao_Alcoolica', 3),
+    ('Chá Gelado de Pêssego', '2023-06-28', 4.00, 3.10, 'Nao_Alcoolica', 3),
+    ('Cerveja Carona', '2023-07-05', 6.50, 4.88, 'Alcoolica', 3),
+    ('Energético Alien', '2024-01-02', 6.00, 3.79, 'Nao_Alcoolica', 2),
+    ('Refrigerante Cola-Coca', '2023-01-18', 5.00, 4.80, 'Nao_Alcoolica', 2),
+    ('Bebida Láctea Sabor Chocolate com Menta', '2023-05-17', 3.75, 1.25, 'Nao_Alcoolica', 2),
+	('Água da Pedra', '2024-01-02', 3.50, 2.10, 'Nao_Alcoolica', 2)
 ;
 
 INSERT INTO Mesa(ID, Qtd_Lugares)
@@ -71,21 +72,21 @@ VALUES
 
 INSERT INTO Ingredientes(Nome, Validade, Armazenamento, Valor_Compra, Tipo, ID_Forn)
 VALUES
-	('Alface 18 Pés', '2022-09-08', 'Frio', 15.00, 'Vegetal', 5),
-    ('Tomate 20KG', '2022-09-28', 'Seco', 45.00, 'Vegetal', 5),
-    ('Picles 440G', '2023-02-13', 'Seco', 11.75, 'Vegetal', 5),
-    ('Pão Italiano 1KG', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
-    ('Pão com Gergelim 1KG', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
-    ('Filé de Peito de Frango 1KG', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
-    ('Hamburguer de Picanha 90G', '2023-01-10', 'Frio', 1.76, 'Carne', 4),
-    ('Carne Moida sem Gordura 1KG', '2023-01-10', 'Frio', 34.99, 'Carne', 4),
-    ('Bacon 1KG', '2023-01-12', 'Frio', 39.80, 'Carne', 4),
-    ('Cebola 1KG', '2022-09-08', 'Seco', 4.80, 'Vegetal', 5),
-    ('Farinha de Rosca 1KG', '2022-09-28', 'Seco', 9.50, 'Extra', 6),
-    ('Farinha de Trigo 5KG', '2022-09-28', 'Seco', 19.89, 'Extra', 6),
-    ('Ovo 30 Dúzias', '2022-10-15', 'Frio', 170.00, 'Extra', 7),
-    ('Batata Frita Congelada 2KG', '2024-05-08', 'Frio', 24.90, 'Extra', 7),
-    ('Queijo Cheddar 2.3KG', '2023-03-12', 'Frio', 493.12, 'Queijo', 8)
+	('Alface', '2022-09-08', 'Frio', 15.00, 'Vegetal', 5),
+    ('Tomate', '2022-09-28', 'Seco', 45.00, 'Vegetal', 5),
+    ('Picles', '2023-02-13', 'Seco', 11.75, 'Vegetal', 5),
+    ('Pão Italiano', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
+    ('Pão com Gergelim', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
+    ('Filé de Peito de Frango', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
+    ('Hamburguer de Picanha', '2023-01-10', 'Frio', 1.76, 'Carne', 4),
+    ('Carne Moida sem Gordura', '2023-01-10', 'Frio', 34.99, 'Carne', 4),
+    ('Bacon', '2023-01-12', 'Frio', 39.80, 'Carne', 4),
+    ('Cebola', '2022-09-08', 'Seco', 4.80, 'Vegetal', 5),
+    ('Farinha de Rosca', '2022-09-28', 'Seco', 9.50, 'Extra', 6),
+    ('Farinha de Trigo', '2022-09-28', 'Seco', 19.89, 'Extra', 6),
+    ('Ovo', '2022-10-15', 'Frio', 170.00, 'Extra', 7),
+    ('Batata Frita Congelada', '2024-05-08', 'Frio', 24.90, 'Extra', 7),
+    ('Queijo Cheddar', '2023-03-12', 'Frio', 493.12, 'Queijo', 8)
 ;
 # Checa Disponibilidade se o produto estiver na validade
 # TODO - Criar método de excluir a entrada se a validade < curdate()
@@ -157,7 +158,7 @@ VALUES
     ('Fritadeira Elétrica', 11522.38, 6),
     ('Forno Elétrico', 5874.85, 6),
     ('Conservador de Batatas Fritas', 2151.24, 6),
-    ('Exaustor 30CM', 1286.99, 6),
+    ('Exaustor', 1286.99, 6),
     ('Cortador de Frios', 4054.00, 6)
 ;
 
