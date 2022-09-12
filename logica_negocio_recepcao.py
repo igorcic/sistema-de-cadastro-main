@@ -85,7 +85,7 @@ class Recepcao:
 
     def Faz_Pedido(self, *args):
         # Padrao esperado args: (Total, ID_Func, ID_Mesa, [[ID_Pratos], [ID_Bebidas]])
-        sql = "SELECT curdate()"
+        sql = "SELECT now()"
         self.cursor.execute(sql)
         result = self.cursor.fetchone()
         # Insere o pedido na tabela Pedidos
