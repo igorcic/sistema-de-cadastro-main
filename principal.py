@@ -23,13 +23,16 @@ class Registrar(Screen):
     pass
 
 class Recepcionista(Screen):
-    pass
+    class Mesas(Screen):
+        pass
 
 class Cozinha(Screen):
     pass
 
 class Gerente(Screen):
     pass
+
+
 
 class Test3(App):
     def build(self):

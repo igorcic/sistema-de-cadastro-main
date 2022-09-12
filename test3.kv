@@ -13,6 +13,9 @@
 
     Gerente:
         name: 'gerente'
+    
+    Mesas:
+        name: 'mesas'
 
 
 <Menu>:
@@ -59,7 +62,7 @@
                 text:"Entrar"
                 font_size:"20sp"
                 bold:True
-                on_release:app.root.current = "cozinha"
+                on_release:app.root.current = "recepcionista"
             CadastroButton:
                 text:"Cadastrar"
                 on_release:app.root.current = "registrar"
@@ -178,6 +181,39 @@
                     height:"60dp"
                     bold:True
                     font_size:"18sp"
+<Mesas>:
+    BoxLayout:
+        size_hint_y:None
+        height:"90dp"
+        padding:root.width * 0.36, 0
+        spacing: 20
+        orientation:"vertical"
+        BoxLayout:
+            size_hint_y:None
+            height:"50dp"
+            orientation:"vertical"
+            spacing: 10
+            ButtonOk:
+                text:"Ver Mesas Livres"
+                size_hint_y:None
+                height:"60dp"
+                bold:True
+                font_size:"18sp"
+
+            ButtonOk:
+                text:"Alocar Mesa"
+                size_hint_y:None
+                height:"60dp"
+                bold:True
+                font_size:"18sp"
+
+            ButtonOk:
+                text:"sair"
+                size_hint_y:None
+                height:"60dp"
+                bold:True
+                font_size:"18sp"
+                on_release:app.root.current = "menu"
 
 <Recepcionista>:
     BoxLayout:
@@ -219,6 +255,7 @@
                     height:"60dp"
                     bold:True
                     font_size:"18sp"
+                    on_release:app.root.current = "mesas"
 
                 ButtonOk:
                     text:"Clientes"
