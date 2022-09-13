@@ -20,7 +20,6 @@ class Cozinha:
         sql = "SELECT pedidos.ID_Mesa, pratos.Nome FROM Pedidos, pratos, pratos_pedidos WHERE Pedidos.ID = Pratos_Pedidos.ID_Pedido and Pratos.ID = Pratos_Pedidos.ID_Prato;"
         self.cursor.execute(sql)
         linhas = self.cursor.fetchall()
-        print(linhas)
         for i in range(len(linhas)):
             count = 0
             for j in range(len(linhas)):
@@ -36,14 +35,13 @@ class Cozinha:
         self.cursor.execute(sql)
         linhas = self.cursor.fetchall()
         for i in range(len(linhas)):
-            print((str(linhas[i][1]).replace(r'\n', '\n').replace(r"b'", "")).replace("\n'", "\n"))
+            print(((str(linhas[i][1]).replace(r'\n', '\n').replace(r"b'", "")).replace("\n'", "\n")).replace("'\n", "\n"))
             print("\n\n")
 
     def Read_Ingredientes(self):
         sql = "SELECT DISTINCT pedidos.ID_Mesa, pratos.Nome, Ingredientes.Nome FROM Pedidos, Pratos_Pedidos, Pratos, ingredientes_receita, ingredientes, modo_preparo WHERE Pedidos.ID = Pratos_Pedidos.ID_Pedido and Pratos.ID = Pratos_Pedidos.ID_Prato and Pratos.ID_Preparo = modo_preparo.ID and ingredientes_receita.ID_preparo = modo_preparo.ID ORDER BY Pedidos.ID_Mesa, pratos.Nome;"
         self.cursor.execute(sql)
         linhas = self.cursor.fetchall()
-        print(linhas)
         passa=[]
         for i in range(len(linhas)):
             count = 0
@@ -132,4 +130,3 @@ class Cozinha:
         val = (ID, )
         self.cursor.execute(sql, val)
         self.mydb.commit()
-
