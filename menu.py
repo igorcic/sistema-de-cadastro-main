@@ -1,6 +1,8 @@
 import interface_recepcao
+import interface_cozinha
 
 sair = False
+opcao = 0
 
 while sair == False:
     print(''' 
@@ -11,11 +13,14 @@ while sair == False:
     4 - Sair
     ''')
     opcao = int(input('Digite o número da opção desejada: '))
+
     if opcao == 1:
         interface_recepcao.clear()
         interface_recepcao.interface_recepcao()
     
-    # elif opcao == 2:
+    elif opcao == 2:
+        interface_cozinha.clear()
+        interface_cozinha.interface_cozinha()
 
     # elif opcao == 3:
 
