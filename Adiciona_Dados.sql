@@ -75,7 +75,7 @@ VALUES
 	('Alface', '2022-09-08', 'Frio', 15.00, 'Vegetal', 5),
     ('Tomate', '2022-09-28', 'Seco', 45.00, 'Vegetal', 5),
     ('Picles', '2023-02-13', 'Seco', 11.75, 'Vegetal', 5),
-    ('Pão Italiano', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
+    ('Pao Italiano', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
     ('Pao com Gergelim', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
     ('File de Peito de Frango', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
     ('Hamburguer de Picanha', '2023-01-10', 'Frio', 1.76, 'Carne', 4),

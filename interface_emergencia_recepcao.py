@@ -15,7 +15,8 @@ while sair == False:
     1 - Mesas
     2 - Clientes
     3 - Cardápio
-    4 - Sair''')
+    4 - Pedidos
+    5 - Sair''')
 
     opcao = int(input('Digite a opção desejada: '))
     clear()
@@ -44,12 +45,15 @@ while sair == False:
             val = int(input('Insira a quantidade de lugares desejada: '))
             val2 = input('Insira o Nome ou CPF do cliente: ')
             try:
-                val2 = recepcao.Get_Cliente_ID(val2)
-                if val2 != None:
-                    recepcao.Aloca_Mesa(val, val2)
-                    print('Mesa alocada com sucesso!')
+                if val2 > 12 or val2 < 0:
+                    raise ValueError
+                else:
+                    val2 = recepcao.Get_Cliente_ID(val2)
+                    if val2 != None:
+                        recepcao.Aloca_Mesa(val, val2)
+                        print('Mesa alocada com sucesso!')
             except:
-                print('Cliente não encontrado!')
+                print('Erro nos dados inseridos!')
             sleep(3)
             clear()
 
@@ -101,27 +105,49 @@ while sair == False:
             val = str(input('Digite o Nome ou CPF do cliente: '))
             if re.findall("\d", val) == []:
                 print('Nome do Cliente: ', val)
-                aux = recepcao.Get_Cliente_ID(val)
+                try:
+                    aux = recepcao.Get_Cliente_ID(val)
 
-                if aux != None:
-                    a = recepcao.Get_Mesa(aux)
+                    if aux != None:
+                        a = recepcao.Get_Mesa(aux)
 
-                    if a != None:
-                        print('Mesa Alocada: ', a[0])
-                        aux = recepcao.Get_Pedidos(a[0])
+                        if a != None:
+                            print('Mesa Alocada: ', a[0])
+                            aux = recepcao.Get_Pedidos(a[0])
 
-                        if aux != None:
-                            print('Número do Pedido: ')
-                            for i in aux:
-                                print(i[0])
-                
-                    else:
-                        print('Cliente não possui mesa alocada.')
-                else:
+                            if aux != None:
+                                print('Número do Pedido: ')
+                                for i in aux:
+                                    print(i[0])
+                    
+                        else:
+                            print('Cliente não possui mesa alocada.')
+                except:
                     print('Cliente não encontrado.')
-                
-                sleep(3)
-                clear()
+
+            else:
+                print('CPF do Cliente: ', val)
+                try:
+                    aux = recepcao.Get_Cliente_ID(val)
+                    if aux != None:
+                        a = recepcao.Get_Mesa(aux)
+
+                        if a != None:
+                            print('Mesa Alocada: ', a[0])
+                            aux = recepcao.Get_Pedidos(a[0])
+
+                            if aux != None:
+                                print('Número do Pedido: ')
+                                for i in aux:
+                                    print(i[0])
+                    
+                        else:
+                            print('Cliente não possui mesa alocada.')
+                except:
+                    print('Cliente não encontrado.')
+
+            sleep(3)
+            clear()
                 
         elif menu == 3:
             print('''Espaço Atual - Remover Cliente
@@ -142,12 +168,104 @@ while sair == False:
         aux = recepcao.Cardapio()
         print('Espaço Atual - Cardápio\n')
         for i in aux:
-            print(f'Item: {i[0]} - R$ {i[1]}')
+            print(f'ID - {i[0]}, Item: {i[1]} - R$ {i[2]}')
 
         input('\nPressione qualquer tecla para retornar...')
+        clear()
 
 
     elif opcao == 4:
+        print ('''Espaço Atual - Pedidos
+        1 - Adicionar Pedido
+        2 - Remover Pedido
+        3 - Consultar Pedido
+        4 - Sair''')
+        menu = int(input('Digite a opção desejada: '))
+        clear()
+
+        if menu == 1:
+            print('''Espaço Atual - Adicionar Pedido
+            ''')
+            val = input('Insira o CPF do Funcionário: ')
+            val2 = input('Insira o Número da mesa: ')
+            pratos, bebidas = [], []
+
+            print('Insira os pratos desejados: ')
+            while True:
+                print('Insira 0 para sair.')
+                aux = int(input('Insira o ID do prato: '))
+                pratos.append(aux)
+                if aux == 0:
+                    break
+
+            
+            print('Insira as bebidas desejadas: ')
+            while True:
+                print('Insira 0 para sair.')
+                aux = int(input('Insira o ID da bebida: '))
+                bebidas.append(aux)
+                if aux == 0:
+                    break
+
+
+            total = 0
+            for i in pratos:
+                a = recepcao.Get_Valor_Prato(i)
+                if a!= None:
+                    total += a[0]
+            for i in bebidas:
+                a = recepcao.Get_Valor_Bebida(i)
+                if a!= None:
+                    total += a[0]
+            try:
+                if pratos[0] == 0 and bebidas[0] == 0:
+                    print('Pedido não adicionado.')
+                else:
+                    recepcao.Faz_Pedido(total, val, val2, pratos, bebidas)
+                    print('Pedido adicionado com sucesso!')
+            except:
+                print('Erro ao adicionar pedido.')
+            sleep(3)
+            clear()
+
+        elif menu == 2:
+            print('''Espaço Atual - Remover Pedido
+            ''')
+            val = input('Insira o Nome ou CPF do Cliente: ')
+            try:
+                recepcao.Limpa_Pedidos_Cliente(val)
+                print('Pedido removido com sucesso!')
+            except:
+                print('Cliente não encontrado.')
+            sleep(3)
+            clear()
+
+        elif menu == 3:
+            print('''Espaço Atual - Consultar Pedido
+            ''')
+            val = input('Insira o Número da mesa: ')
+
+            aux = recepcao.Get_Pedidos(val)
+            if len(aux) > 0:
+                print('Número do Pedido: ')
+                for i in range(len(aux)):
+                    print(aux[i][0])
+                    a = recepcao.Get_Pratos_Pedido(aux[i][0])
+                    for item in a:
+                        print(f'ID: {item[0]} - Prato: {item[1]}')
+                    b = recepcao.Get_Bebidas_Pedido(aux[i][0])
+                    for item in b:
+                        print(f'ID: {item[0]} - Bebida: {item[1]}')
+            else:
+                print('Mesa não possui pedidos.')
+            
+            input('\nPressione qualquer tecla para retornar...')
+            clear()
+
+        elif menu == 4:
+            clear()
+
+    elif opcao == 5:
         recepcao.__del__()
         sair = True
     

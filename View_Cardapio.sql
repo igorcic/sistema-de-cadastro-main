@@ -4,6 +4,7 @@ CREATE
     SQL SECURITY DEFINER
 VIEW `Restaurante_BD`.`Cardapio` AS
     SELECT 
+		`Bebidas`.`ID` AS `ID_Bebida`,
         `Bebidas`.`Nome` AS `Nome`,
         `Bebidas`.`Valor_Venda` AS `Valor_Venda`
     FROM
@@ -20,6 +21,7 @@ VIEW `Restaurante_BD`.`Cardapio` AS
         WHERE
             (`Restaurante_BD`.`Bebidas`.`Validade` > CURDATE())) `Bebidas` 
     UNION SELECT 
+		`Pratos`.`ID` AS `ID_Pratos`,
         `Pratos`.`Nome` AS `Nome`,
         `Pratos`.`Valor_Venda` AS `Valor_Venda`
     FROM

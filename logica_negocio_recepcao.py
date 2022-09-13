@@ -11,6 +11,7 @@ class Recepcao:
             host='localhost',
             auth_plugin='mysql_native_password', 
             database='Restaurante_BD')
+        self.mydb.start_transaction(isolation_level='READ COMMITTED')
         self.cursor = self.mydb.cursor(buffered=True)
     
     def __del__(self):
@@ -102,6 +103,34 @@ class Recepcao:
         result = self.cursor.fetchall()
         return result
 
+    def Get_Pratos_Pedido(self, *args):
+        # Padrao esperado args: ID_Pedido
+        sql = "SELECT ID_Prato FROM Pratos_Pedidos WHERE ID_Pedido = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchall()
+        aux = []
+        for i in result:
+            sql = "SELECT ID,Nome FROM Pratos WHERE ID = %s"
+            val = (i[0], )
+            self.cursor.execute(sql, val)
+            result2 = self.cursor.fetchone()
+            aux.append(result2)
+        return aux
+        
+    def Get_Bebidas_Pedido(self, *args):
+        sql = "SELECT ID_Bebida FROM Bebidas_Pedidos WHERE ID_Pedido = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchall()
+        aux = []
+        for i in result:
+            sql = "SELECT ID,Nome FROM Bebidas WHERE ID = %s"
+            val = (i[0], )
+            self.cursor.execute(sql, val)
+            result2 = self.cursor.fetchone()
+            aux.append(result2)
+        return aux
+            
+
     def Limpa_Mesa(self, *args):
         # Padrao esperado args: ID_Mesa
         sql = "SELECT ID FROM Pedidos WHERE ID_Mesa = %s"
@@ -116,6 +145,20 @@ class Recepcao:
         self.cursor.execute(sql, args)
         self.mydb.commit()
 
+    def Get_Valor_Prato(self, *args):
+        # Padrao esperado args: ID_Prato
+        sql = "SELECT Valor_Venda FROM Pratos WHERE ID = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchone()
+        return result
+    
+    def Get_Valor_Bebida(self, *args):
+        # Padrao esperado args: ID_Bebida
+        sql = "SELECT Valor_Venda FROM Bebidas WHERE ID = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchone()
+        return result
+
     def Faz_Pedido(self, *args):
         # Padrao esperado args: (Total, ID_Func, ID_Mesa, [[ID_Pratos], [ID_Bebidas]])
         sql = "SELECT now()"
@@ -127,6 +170,7 @@ class Recepcao:
         self.cursor.execute(sql, val)
         self.mydb.commit()
         aux = args[3]
+        aux2 = args[4]
         # Obtem o ID do pedido
         sql = "SELECT last_insert_id() FROM Pedidos"
         self.cursor.execute(sql)
@@ -134,18 +178,21 @@ class Recepcao:
         # Insere os pratos e as bebidas pedidas nas tabelas Pratos_Pedidos e Bebidas_Pedidos
         while len(aux) > 0:
             a = aux.pop(0)
-            for i in range(len(a)):
-                sql = "INSERT INTO Pratos_Pedidos (ID_Pedido, ID_Prato) VALUES (%s, %s)"
-                val = (result[0], a[i])
-                self.cursor.execute(sql, val)
-                self.mydb.commit()
-            
-            b = aux.pop(0)
-            for i in range(len(a)):
-                sql = "INSERT INTO Bebidas_Pedidos (ID_Pedido, ID_Bebida) VALUES (%s, %s)"
-                val = (result[0], b[i])
-                self.cursor.execute(sql, val)
-                self.mydb.commit()
+            if a == 0:
+                break
+            sql = "INSERT INTO Pratos_Pedidos (ID_Pedido, ID_Prato) VALUES (%s, %s)"
+            val = (result[0], a)
+            self.cursor.execute(sql, val)
+            self.mydb.commit()
+        
+        while len(aux2) > 0:
+            b = aux2.pop(0)
+            if b == 0:
+                break
+            sql = "INSERT INTO Bebidas_Pedidos (ID_Pedido, ID_Bebida) VALUES (%s, %s)"
+            val = (result[0], b)
+            self.cursor.execute(sql, val)
+            self.mydb.commit()
         
     def Limpa_Pedidos_Cliente(self, *args):
         # Padrao esperado args: CPF cadastrado ou Nome
