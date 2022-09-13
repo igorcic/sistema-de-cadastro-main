@@ -41,16 +41,15 @@ while sair == False:
 
         elif menu == 2:
             print('Espaço Atual - Alocar mesa')
-            val = input('Insira a quantidade de lugares desejada: ')
+            val = int(input('Insira a quantidade de lugares desejada: '))
             val2 = input('Insira o Nome ou CPF do cliente: ')
             try:
                 val2 = recepcao.Get_Cliente_ID(val2)
                 if val2 != None:
-                    print(val, val2,len(val2))
                     recepcao.Aloca_Mesa(val, val2)
                     print('Mesa alocada com sucesso!')
             except:
-                print('Cliente não encontrado ou Mesa já alocada!')
+                print('Cliente não encontrado!')
             sleep(3)
             clear()
 
@@ -91,9 +90,10 @@ while sair == False:
 
             else:
                 recepcao.Add_Cliente(nome)
-                print('Cliente adicionado: ', nome) 
-                sleep(3)
-                clear()  
+
+            print('Cliente adicionado: ', nome) 
+            sleep(3)
+            clear()  
                 
         elif menu == 2:
             print('''Espaço Atual - Consultar Cliente

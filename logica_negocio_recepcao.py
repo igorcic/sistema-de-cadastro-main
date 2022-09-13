@@ -76,7 +76,7 @@ class Recepcao:
         result = self.cursor.fetchone()
         # Testa se o cliente já está alocado em uma mesa
         # Se nao, pode alocar uma mesa
-        if len(result) == 0:
+        if result == None:
             sql = "SELECT ID, QTD_Lugares FROM Mesa WHERE ID_Cliente IS NULL"
             self.cursor.execute(sql)
             result = self.cursor.fetchall()
