@@ -15,30 +15,30 @@ VALUES
 
 INSERT INTO Email_Fornecedores()
 VALUES
-	(1, 'fornece@coca.ina'),
-    (2, 'bebidas@vebam.drink'),
-    (3, 'paoquentinho@bom.dms'),
-    (4, 'sempapelao@freevaca.br'),
-    (5, 'natural@daterra.com'),
-    (6, 'aquecimentoglobal@eletro.br'),
-    (7, 'acabou@osproduto.caro')
+	(2, 'fornece@coca.ina'),
+    (3, 'bebidas@vebam.drink'),
+    (4, 'paoquentinho@bom.dms'),
+    (5, 'sempapelao@freevaca.br'),
+    (6, 'natural@daterra.com'),
+    (7, 'aquecimentoglobal@eletro.br'),
+    (8, 'acabou@osproduto.caro')
 ;
 
 INSERT INTO Telefone_Fornecedores()
 VALUES
-	(1, '0800-123-4567'),
-    (2, '0800-456-7890'),
-    (3, '0800-789-0123'),
-    (4, '0800-000-4444'),
-    (5, '10 3104-9898'),
-    (6, '0800-481-3975'),
-    (7, '80 4002-8922')
+	(2, '0800-123-4567'),
+    (3, '0800-456-7890'),
+    (4, '0800-789-0123'),
+    (5, '0800-000-4444'),
+    (6, '10 3104-9898'),
+    (7, '0800-481-3975'),
+    (8, '80 4002-8922')
 ;
 
 INSERT INTO Bebidas(Nome, Validade, Valor_Venda, Valor_Compra, Tipo, ID_Forn)
 VALUES
 	('Refrigerante de Limao', '2022-09-23', 4.50, 4.00, 'Nao_Alcoolica', 3),
-    ('Chá Gelado de Pêssego', '2023-06-28', 4.00, 3.10, 'Nao_Alcoolica', 3),
+    ('Cha Gelado de Pessego', '2023-06-28', 4.00, 3.10, 'Nao_Alcoolica', 3),
     ('Cerveja Carona', '2023-07-05', 6.50, 4.88, 'Alcoolica', 3),
     ('Energetico Alien', '2024-01-02', 6.00, 3.79, 'Nao_Alcoolica', 2),
     ('Refrigerante Cola-Coca', '2023-01-18', 5.00, 4.80, 'Nao_Alcoolica', 2),
@@ -76,7 +76,7 @@ VALUES
     ('Tomate', '2022-09-28', 'Seco', 45.00, 'Vegetal', 5),
     ('Picles', '2023-02-13', 'Seco', 11.75, 'Vegetal', 5),
     ('Pão Italiano', '2022-10-18', 'Seco', 29.90, 'Pao', 3),
-    ('Pão com Gergelim', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
+    ('Pao com Gergelim', '2022-10-23', 'Seco', 17.65, 'Pao', 3),
     ('File de Peito de Frango', '2023-05-20', 'Frio', 22.80, 'Carne', 4),
     ('Hamburguer de Picanha', '2023-01-10', 'Frio', 1.76, 'Carne', 4),
     ('Carne Moida sem Gordura', '2023-01-10', 'Frio', 34.99, 'Carne', 4),

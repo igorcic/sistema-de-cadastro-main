@@ -52,19 +52,18 @@ class Recepcao:
     
     def Del_Cliente(self, *args):
         #Padrao esperado args: Nome ou CPF
-        if re.findall("\d", args[0]) != []: # Testa se o argumento tem números
-            sql = "DELETE FROM Clientes WHERE CPF = %s"
-            val = args
+        result = self.Get_Cliente_ID(args[0])
+        if result != None:
+            sql = "UPDATE Mesa SET ID_Cliente = NULL WHERE ID_Cliente = %s"
+            val = (result, )
             self.cursor.execute(sql, val)
             self.mydb.commit()
-        else:
-            sql = "DELETE FROM Clientes WHERE Nome = %s"
-            val = args
+            sql = "DELETE FROM Clientes WHERE ID = %s"
             self.cursor.execute(sql, val)
             self.mydb.commit()
     
     def Mesas_Livres(self):
-        sql = "SELECT ID FROM Mesa WHERE ID_Cliente IS NULL"
+        sql = "SELECT ID, QTD_Lugares FROM Mesa WHERE ID_Cliente IS NULL"
         self.cursor.execute(sql)
         result = self.cursor.fetchall()
         return result
@@ -88,6 +87,34 @@ class Recepcao:
                     self.cursor.execute(sql, val)
                     self.mydb.commit()
                     break
+    
+    def Get_Mesa(self, *args):
+        # Padrao esperado args: ID_Cliente
+        sql = "SELECT ID FROM Mesa WHERE ID_Cliente = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchone()
+        return result
+    
+    def Get_Pedidos(self, *args):
+        # Padrao esperado args: ID_Mesa
+        sql = "SELECT ID FROM Pedidos WHERE ID_Mesa = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchall()
+        return result
+
+    def Limpa_Mesa(self, *args):
+        # Padrao esperado args: ID_Mesa
+        sql = "SELECT ID FROM Pedidos WHERE ID_Mesa = %s"
+        self.cursor.execute(sql, args)
+        result = self.cursor.fetchall()
+        if len(result) != 0:
+            sql = "DELETE FROM Pedidos WHERE ID_Mesa = %s"
+            self.cursor.execute(sql, args)
+            self.mydb.commit()
+
+        sql = "UPDATE Mesa SET ID_Cliente = NULL WHERE ID = %s"
+        self.cursor.execute(sql, args)
+        self.mydb.commit()
 
     def Faz_Pedido(self, *args):
         # Padrao esperado args: (Total, ID_Func, ID_Mesa, [[ID_Pratos], [ID_Bebidas]])
