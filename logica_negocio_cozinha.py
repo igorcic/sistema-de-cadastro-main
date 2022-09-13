@@ -133,6 +133,3 @@ class Cozinha:
         self.cursor.execute(sql, val)
         self.mydb.commit()
 
-
-c = Cozinha('gabriel', '357159258456')
-c.Read_Ingredientes()
