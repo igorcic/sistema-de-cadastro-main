@@ -1,9 +1,0 @@
-Banco de dados: Sqlite3
------------------------
-pip install db-sqlite3
------------------------
-
-GUI: Kivy
------------------------
-pip install kivy
------------------------
